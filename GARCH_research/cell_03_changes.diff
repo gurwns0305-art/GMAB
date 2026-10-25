@@ -1,0 +1,24 @@
+--- original/cell_3
++++ updated/cell_3
+@@ -17,9 +17,18 @@
+ data = data.dropna(subset=["log_return"]).reset_index(drop=True)
+ 
+ # 3. Train/Test 분할
+-split_date = pd.Timestamp("2023-10-22")
+-train = data[data["date"] < split_date].copy()
+-test = data[data["date"] >= split_date].copy()
++# Period selection only: returns are calculated before filtering, retaining the actual prior NAV.
++TRAIN_START = pd.Timestamp("2012-01-01")
++TRAIN_END = pd.Timestamp("2014-12-31")
++TEST_START = pd.Timestamp("2015-01-01")
++TEST_END = pd.Timestamp("2025-12-31")
++split_date = TEST_START
++
++data = data[data["date"].between(TRAIN_START, TEST_END)].copy().reset_index(drop=True)
++train = data[data["date"].between(TRAIN_START, TRAIN_END)].copy()
++test = data[data["date"].between(TEST_START, TEST_END)].copy()
++assert not train.empty and not test.empty
++assert train["date"].max() < test["date"].min()
+ 
+ # 4. GARCH 입력 데이터 생성
+ y_train = train["log_return_pct"].to_numpy()

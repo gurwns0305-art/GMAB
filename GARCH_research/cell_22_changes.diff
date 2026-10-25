@@ -1,0 +1,10 @@
+--- original/cell_22
++++ updated/cell_22
+@@ -39,6 +39,7 @@
+ 
+ # 4. 기존 GARCH-Duan 프라이싱 결과에 반영
+ # gmab_price는 기존 프라이싱 셀에서 산출한 값
++gmab_price = put_price  # Existing Cell 9 output; alias only, no pricing formula change.
+ gmab_price_survival = gmab_price * survival_10y
+ 
+ print(f"10년 생존확률: {survival_10y:.6%}")

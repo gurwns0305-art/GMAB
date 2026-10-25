@@ -1,0 +1,42 @@
+--- original/cell_1
++++ updated/cell_1
+@@ -4,18 +4,30 @@
+ import pandas as pd
+ import numpy as np
+ import matplotlib.pyplot as plt
+-from google.colab import files
++from pathlib import Path
+ from IPython.display import display
+ 
+-# 만약 파일이 아직 로드되지 않았다면 업로드 창을 띄웁니다.
+-try:
+-    raw = pd.read_csv('KLVL5225111_NAV_date_aligned.csv')
+-    print("기존 파일을 로드했습니다.")
+-except FileNotFoundError:
++# VS Code: open this package folder, then run this notebook.
++# Colab: upload both bundled CSV files when prompted.
++CSV_PATH = "KLVL5225111_NAV_date_aligned.csv"
++if not Path(CSV_PATH).is_file():
++    try:
++        from google.colab import files
++    except ImportError as exc:
++        raise FileNotFoundError(
++            "Open the extracted package folder in VS Code, or set CSV_PATH to the bundled aligned CSV."
++        ) from exc
+     uploaded = files.upload()
+-    filename = next(iter(uploaded))
+-    raw = pd.read_csv(filename)
+-
++    candidates = []
++    for name in uploaded:
++        if name.lower().endswith(".csv"):
++            header = pd.read_csv(name, nrows=0, encoding="utf-8-sig").columns
++            if {"disclosure_date", "valuation_date_T_minus_1", "NAV_KRW", "date_type"}.issubset(header):
++                candidates.append(name)
++    if len(candidates) != 1:
++        raise ValueError("Upload one NAV aligned CSV and the bundled male_60_69_mortality.csv.")
++    CSV_PATH = candidates[0]
++raw = pd.read_csv(CSV_PATH, encoding="utf-8-sig")
+ print("데이터 크기:", raw.shape)
+ print("컬럼명:", raw.columns.tolist())
+-display(raw.head())+display(raw.head())

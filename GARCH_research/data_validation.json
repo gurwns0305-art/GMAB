@@ -1,0 +1,18 @@
+{
+  "data_cells_executed": [
+    1,
+    2,
+    3
+  ],
+  "full_model_rerun": false,
+  "train_rows": 783,
+  "train_first": "2012-01-02",
+  "train_last": "2014-12-31",
+  "test_rows": 2870,
+  "test_first": "2015-01-01",
+  "test_last": "2025-12-31",
+  "missing_train_returns": 0,
+  "missing_test_returns": 0,
+  "survival_10y": 0.9092031803209395,
+  "elapsed_seconds": 2.1000664234161377
+}

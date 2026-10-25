@@ -1,0 +1,44 @@
+{
+  "original_sha256": "f937d533b10cd5beba887950a67953f7081eb5264e26ed124fa195232ed03177",
+  "source_csv_sha256": "099f3db063f79495ba49a018cdfc5cc1a9b4b2556ba3c3065e77a37ef3cbc780",
+  "changed_cells": [
+    0,
+    1,
+    3,
+    22
+  ],
+  "unchanged_code_cells": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    23
+  ],
+  "aligned_rows": 5479,
+  "aligned_start": "2011-01-01",
+  "aligned_end": "2025-12-31",
+  "raw_disclosure_start": "2011-01-02",
+  "raw_disclosure_end": "2026-01-01",
+  "date_mapping": "Preserved original assumption: disclosure date minus one calendar day, then weekday filter",
+  "train": [
+    "2012-01-01",
+    "2014-12-31"
+  ],
+  "test": [
+    "2015-01-01",
+    "2025-12-31"
+  ]
+}

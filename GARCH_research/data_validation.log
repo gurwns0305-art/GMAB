@@ -1,0 +1,31 @@
+데이터 크기: (5479, 4)
+컬럼명: ['disclosure_date', 'valuation_date_T_minus_1', 'NAV_KRW', 'date_type']
+  disclosure_date valuation_date_T_minus_1  NAV_KRW date_type
+0      2011-01-02               2011-01-01  1566.47   weekend
+1      2011-01-03               2011-01-02  1566.44   weekend
+2      2011-01-04               2011-01-03  1578.18   weekday
+3      2011-01-05               2011-01-04  1587.14   weekday
+4      2011-01-06               2011-01-05  1581.04   weekday
+===== 데이터 품질 점검 =====
+전체 관측치: 5479
+날짜 결측치: 0
+NAV 결측치: 0
+중복 날짜: 0
+
+===== 전처리 결과 =====
+전체 데이터: 5479
+평일 데이터: 3913
+주말 제외: 1566
+분석 시작일: 2011-01-03
+분석 종료일: 2025-12-31
+  disclosure_date       date      NAV date_type
+0      2011-01-04 2011-01-03  1578.18   weekday
+1      2011-01-05 2011-01-04  1587.14   weekday
+2      2011-01-06 2011-01-05  1581.04   weekday
+3      2011-01-07 2011-01-06  1580.18   weekday
+4      2011-01-08 2011-01-07  1581.64   weekday
+===== Train/Test 분할 결과 =====
+      구분   관측치         시작일         종료일  평균 로그수익률(%)  일별 표준편차(%)
+0  Train   783  2012-01-02  2014-12-31     0.015932    0.712650
+1   Test  2870  2015-01-01  2025-12-31     0.039621    1.049027
+cell3:67: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
